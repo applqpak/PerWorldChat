@@ -12,5 +12,25 @@
   class Main extends PluginBase implements Listener
   {
 
+    public function dataPath()
+    {
+
+      return $this->getDataFolder();
+
+    }
+
+    public function server()
+    {
+
+      return $this->getServer();
+
+    }
+
     public function onEnable()
     {
+
+      @mkdir($this->dataPath());
+
+      $this->cfg = new Config($this->dataPath() . "config.yml", Config::YAML, array("logged-chat-disabled" => "true", "disabled-in-worlds" => array()));
+
+    }
